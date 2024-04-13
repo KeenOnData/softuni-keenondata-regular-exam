@@ -1,0 +1,24 @@
+name: Build Test Deploy Cookbook
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-unit-test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+    - name: Use Node.js Version 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+    - name: Display softuni username
+      run: echo "keenondata"
+    - run: npm install
+    - run: npm run test:unit
